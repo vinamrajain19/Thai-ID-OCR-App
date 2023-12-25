@@ -94,6 +94,7 @@ function App() {
           setTextResult(JSON.stringify(extractedData, null, 2));
 
           // Send data to the server and get the returned ID
+          //console.log(extractedData);
           const response = await sendExtractedDataToServer(extractedData);
 
           localStorage.setItem('ocrRecordId', response.data.id);
@@ -136,11 +137,11 @@ function App() {
 
     return {
       Identification_Number: Identification_Number ? Identification_Number[1] : "",
-      Name: name ? name[1] : "",
+      name: name ? name[1] : "",
       Last_name: Last_name ? Last_name[1] : "",
-      Date_of_Birth: date_of_birth ? date_of_birth[1] : "",
-      Date_of_Issue: date_of_issue ? date_of_issue[1] : "",
-      Date_of_Expiry: date_of_expiry ? (date_of_expiry[1]) : "",
+      date_of_birth: date_of_birth ? date_of_birth[1] : "",
+      date_of_issue: date_of_issue ? date_of_issue[1] : "",
+      date_of_expiry: date_of_expiry ? (date_of_expiry[1]) : "",
     };
   };
 
@@ -165,6 +166,7 @@ function App() {
       setTextResult("");
       setExtractedFields({});
       setSelectedRecordId(null);
+      fetchOcrHistory();
 
       // Clear the local storage record ID
       localStorage.removeItem('ocrRecordId');
