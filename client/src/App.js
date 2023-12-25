@@ -117,7 +117,7 @@ function App() {
 
   const sendExtractedDataToServer = async (data) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/ocr', data);
+      const response = await axios.post('/api/ocr', data);
       console.log('Server response:', response.data);
       return response;
     } catch (error) {
@@ -146,7 +146,7 @@ function App() {
 
   const fetchOcrHistory = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/ocr', {
+      const response = await axios.get('/api/ocr', {
         params: { name: filterName, identificationNo: filterIdentificationNo },
       });
       setOcrHistory(response.data);
@@ -158,7 +158,7 @@ function App() {
   const deleteOcrRecord = async () => {
     try {
       const id = localStorage.getItem('ocrRecordId');
-      await axios.delete(`http://localhost:5000/api/ocr/${id}`);
+      await axios.delete(`/api/ocr/${id}`);
 
       // Reset state values for the image and extracted text
       setSelectedImage(null);
@@ -191,12 +191,12 @@ function App() {
       const id = localStorage.getItem('ocrRecordId');
       if (id !== null) {
         // Check if a similar record already exists in the backend
-        const existingRecordResponse = await axios.get(`http://localhost:5000/api/ocr/${id}`);
+        const existingRecordResponse = await axios.get(`/api/ocr/${id}`);
         const existingRecord = existingRecordResponse.data;
 
         if (existingRecord) {
           // Update the existing record
-          await axios.put(`http://localhost:5000/api/ocr/${id}`, {
+          await axios.put(`/api/ocr/${id}`, {
 
             Identification_Number: extractedFields.Identification_Number,
             name: extractedFields.name,
