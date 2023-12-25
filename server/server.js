@@ -12,13 +12,22 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // MongoDB connection
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('MongoDB Connected'))
-    .catch(err => console.log(err));
+const dbConfig = require('./config/dbConfig');
 
 //app.use(express.json());
 
 app.use(express.json({ limit: '10mb' }));
+
+// deployment config
+const path = require("path");
+__dirname = path.resolve();
+
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "/client/build")));
+    app.get("*", (req, res) => {
+        res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+    });
+}
 
 
 app.use(cors());
