@@ -42,6 +42,8 @@ npm start
 ### Added Functionality 
 
 Also added remove filters functionality but when I recorded the video it was not there, I added it afterward.
+Here is the image of application.
+![Screenshot (188)](https://github.com/vinamrajain19/Thai-ID-OCR-App/assets/91343225/6e373004-4a8d-495e-a05a-5414ce439e71)
 
 ### Issue
 
