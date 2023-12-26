@@ -182,10 +182,20 @@ function App() {
 
   };
 
+  const handleRemoveFilters = () => {
+    // Clear OCR history and reset filter values
+    setOcrHistory([]);
+    setFilterName("");
+    setFilterIdentificationNo("");
+    setFiltersActive(false);
+  };
+
   const handleEdit = (recordId) => {
     setSelectedRecordId(recordId);
     setEditMode(true);
   };
+
+
 
   const handleSave = async () => {
     try {
@@ -304,6 +314,9 @@ function App() {
         />
 
         <button onClick={handleFilterChange}>Apply Filters</button>
+        <button onClick={handleRemoveFilters}>
+          Remove Filters
+        </button>
       </div>
 
       {filtersActive && (
@@ -312,9 +325,11 @@ function App() {
           <ul>
             {ocrHistory.map((item) => (
               <li key={item._id}>
+                {/* Display relevant fields */}
                 <span>Name: {item.name},</span>
                 <span>Last Name: {item.Last_name},</span>
                 <span>Identification Number: {item.Identification_Number}</span>
+                {/* Add other fields as needed */}
               </li>
             ))}
           </ul>
