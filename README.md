@@ -47,7 +47,7 @@ Here is the image of application.
 
 ### Issue
 
-There is a small issue, when we use search with filters functionality in the application, it does not work properly but this issue is on the deployed version only. When we are running it locally, the search functionality is working properly. The issue is with the production code of react-dom on render (on which I have deployed my application). In the demo video, I am running the application locally and in this search functionality is working fine.
+There is a small issue, when we use search with filters functionality in the application, it does not work properly but this issue is on the deployed version only. When we are running it locally, the search functionality is working properly. The issue is with the production code of react-dom on render website (on which I have deployed my application). In the demo video, I am running the application locally and in this search functionality is working fine. 
 
 So this issue is: 
 ```
